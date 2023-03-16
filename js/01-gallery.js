@@ -3,11 +3,11 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
 
-const gallery = document.querySelector(".gallery")
+const gallery = document.querySelector('.gallery');
 
 let backup = ``;
-galleryItems.forEach((item) => {
-    backup += `<div class="gallery__item">
+galleryItems.forEach(item => {
+  backup += `<div class="gallery__item">
     <a class="gallery__link" href=${item.original}>
       <img
         class="gallery__image"
@@ -17,23 +17,16 @@ galleryItems.forEach((item) => {
       />
     </a>
   </div>`;
-    });
+});
 
-    gallery.insertAdjacentHTML("afterbegin", backup);
+gallery.insertAdjacentHTML('afterbegin', backup);
 
-//    const itemLink = gallery.querySelector(".gallery__link");
-//    itemLink.addEventListener("click", (ev) => {
-//     ev.preventDefault();
-//    })
-
-   gallery.addEventListener("click", (ev) => {
-    ev.preventDefault();
-    if (ev.target.dataset.source) {
-        const instance = basicLightbox.create(`
+gallery.addEventListener('click', ev => {
+  ev.preventDefault();
+  if (ev.target.dataset.source) {
+    const instance = basicLightbox.create(`
         <img src=${ev.target.dataset.source} width="1200">
-    `)
-        instance.show()
-    }
-        
-   })
-
+    `);
+    instance.show();
+  }
+});
